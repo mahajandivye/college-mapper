@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dine Outs</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
+      background: 
+        linear-gradient(to bottom, rgba(255, 236, 210, 0.85), rgba(252, 182, 159, 0.85)),
+        url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      margin-top: 60px;
+      color: #3b3b3b;
+      font-size: 2.8em;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+      max-width: 800px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    li {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    }
+
+    a {
+      text-decoration: none;
+      color: #d35400;
+      font-size: 1.2em;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #e67e22;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #555;
+      background-color: rgba(255,255,255,0.7);
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍽️ Nearby Dine-Outs</h1>
+  <ul>
+    <li><a href="images/pizza-menu.jpg" target="_blank">🍕 Pizza Point</a></li>
+    <li><a href="images/cafe-menu.jpg" target="_blank">☕ Café Chill</a></li>
+    <li><a href="images/maggi-hub.jpg" target="_blank">🍜 Maggi Hub</a></li>
+  </ul>
+  <footer>Craving something? Here's where to go! 😋</footer>
+</body>
+</html>

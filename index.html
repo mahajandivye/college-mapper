@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Companion</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2em;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffde59;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
+      padding-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 4em;
+      animation: fadeIn 2s ease-out;
+      margin-bottom: 0.2em;
+    }
+
+    .subtitle {
+      font-size: 1.5em;
+      font-weight: 500;
+      margin-bottom: 30px;
+      animation: fadeIn 3s ease-out;
+    }
+
+    .notice-board {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #222;
+      font-family: 'Georgia', serif;
+      padding: 30px 40px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 90%;
+      text-align: left;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .notice-board h2 {
+      color: #002147;
+      font-size: 1.6em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .notice-board ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    .notice-board li {
+      margin-bottom: 12px;
+      font-size: 1.05em;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      font-size: 1em;
+      color: #ffffffcc;
+      padding: 15px 0;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .notice-board {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #222;
+  font-family: 'Georgia', serif;
+  padding: 30px 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 90%;
+  text-align: left;
+  animation: fadeIn 2s ease-out;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.notice-board:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="map.html">Map</a>
+    <a href="exams.html">Exams</a>
+    <a href="dineouts.html">Dine Outs</a>
+    <a href="hostels.html">Hostels</a>
+  </nav>
+
+  <main>
+    <h1>Hey Thaparian!</h1>
+    <p class="subtitle">One stop solution for all your college related queries</p>
+
+    <div class="notice-board">
+      <h2>Exam Notices</h2>
+      <ul>
+        <li>Mid-term examinations will commence on <strong>August 12</strong>.</li>
+        <li>The deadline for exam form submission is <strong>August 5</strong>.</li>
+        <li>Admit cards will be issued from <strong>August 10</strong>.</li>
+        <li>End-term examinations are scheduled to begin on <strong>October 25</strong>.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Made with ❤️ by Divye
+  </footer>
+</body>
+</html>
