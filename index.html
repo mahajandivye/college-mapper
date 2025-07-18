@@ -8,19 +8,21 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
       background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       color: white;
       text-align: center;
       position: relative;
@@ -41,13 +43,14 @@
       background-color: rgba(0, 0, 0, 0.7);
       width: 100%;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       padding: 10px 30px;
       position: fixed;
       top: 0;
+      z-index: 10;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1;
     }
 
     .logo img {
@@ -55,80 +58,63 @@
       width: auto;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 40px;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.2em;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #ffde59;
-    }
-
-    .nav-icons {
+    .nav-links, .nav-icons {
       display: flex;
       gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .nav-icons a {
+    .nav-links a, .nav-icons a {
       color: white;
-      font-size: 1.2em;
       text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 600;
       transition: color 0.3s ease;
     }
 
-    .nav-icons a:hover {
+    .nav-links a:hover, .nav-icons a:hover {
       color: #ffde59;
     }
 
     main {
-      flex: 1;
+      padding-top: 100px;
+      padding-bottom: 40px;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 100px;
-      padding-bottom: 30px;
     }
 
     h1 {
-      font-size: 4em;
-      animation: fadeIn 2s ease-out;
+      font-size: 3em;
+      animation: fadeIn 1.5s ease-out;
       margin-bottom: 0.2em;
     }
 
     .subtitle {
-      font-size: 1.5em;
+      font-size: 1.2em;
       font-weight: 500;
-      margin-bottom: 30px;
-      animation: fadeIn 3s ease-out;
+      margin-bottom: 25px;
+      animation: fadeIn 2s ease-out;
     }
 
-    /* Animated SGPA Cloud */
     .cloud-container {
       display: inline-block;
-      margin-top: 30px;
-      margin-bottom: 40px;
-      text-decoration: none;
+      margin: 20px 0;
       animation: floatCloud 3s ease-in-out infinite;
+      text-decoration: none;
     }
 
     .cloud-text {
       background: rgba(255, 255, 255, 0.85);
-      padding: 15px 30px;
+      padding: 12px 28px;
       border-radius: 40px;
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: 600;
       color: #333;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .cloud-container:hover .cloud-text {
@@ -138,35 +124,25 @@
     }
 
     @keyframes floatCloud {
-      0% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
     }
 
     .notice-board {
       background-color: rgba(255, 255, 255, 0.95);
       color: #222;
-      font-family: 'Georgia', serif;
-      padding: 30px 40px;
+      padding: 25px 30px;
       border-radius: 10px;
-      border: 1px solid #ccc;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
       width: 90%;
+      max-width: 600px;
+      margin-bottom: 40px;
       text-align: left;
-      animation: fadeIn 2s ease-out;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .notice-board:active {
-      transform: translateY(2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .notice-board h2 {
       color: #002147;
-      font-size: 1.6em;
+      font-size: 1.5em;
       margin-bottom: 15px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
@@ -174,53 +150,29 @@
 
     .notice-board ul {
       padding-left: 20px;
-      list-style-type: disc;
     }
 
     .notice-board li {
-      margin-bottom: 12px;
-      font-size: 1.05em;
+      margin-bottom: 10px;
+      font-size: 1em;
     }
 
     .about-us {
-      margin-top: 60px;
       max-width: 750px;
       padding: 0 20px;
-      animation: fadeSlideUp 1.8s ease-out both;
     }
 
     .about-heading {
-      font-size: 2.2em;
-      color: #ffffff;
-      margin-bottom: 20px;
+      font-size: 2em;
       font-weight: 600;
-      animation: fadeInText 1.5s ease-in-out;
+      color: white;
+      margin-bottom: 15px;
     }
 
     .about-text {
-      font-size: 1.2em;
+      font-size: 1.1em;
       color: #dddddd;
       line-height: 1.6;
-      animation: fadeInText 2s ease-in-out 0.5s both;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeSlideUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInText {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    input[type="range"] {
-      display: none; /* hide slider */
     }
 
     footer {
@@ -230,115 +182,84 @@
       color: #ffffffcc;
       padding: 15px 0;
     }
-    /* Responsive Design Fixes */
-@media (max-width: 1024px) {
-  .nav-links, .nav-icons {
-    gap: 20px;
-  }
 
-  h1 {
-    font-size: 3em;
-  }
+    input[type="range"] {
+      display: none;
+    }
 
-  .subtitle {
-    font-size: 1.2em;
-  }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-  .cloud-text {
-    font-size: 1em;
-    padding: 12px 20px;
-  }
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
 
-  .notice-board {
-    padding: 20px;
-    font-size: 0.95em;
-  }
+      .nav-links, .nav-icons {
+        justify-content: flex-start;
+        gap: 15px;
+        width: 100%;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
 
-  .about-heading {
-    font-size: 1.8em;
-  }
+      h1 {
+        font-size: 2.2em;
+      }
 
-  .about-text {
-    font-size: 1em;
-  }
-}
+      .subtitle {
+        font-size: 1em;
+      }
 
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+      .cloud-text {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
 
-  .nav-links, .nav-icons {
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
-    gap: 15px;
-  }
+      .notice-board {
+        font-size: 0.95em;
+      }
 
-  .logo {
-    align-self: center;
-    margin-bottom: 10px;
-  }
+      .about-heading {
+        font-size: 1.6em;
+      }
 
-  h1 {
-    font-size: 2.4em;
-  }
+      .about-text {
+        font-size: 1em;
+      }
+    }
 
-  .subtitle {
-    font-size: 1.1em;
-  }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
 
-  .cloud-text {
-    font-size: 0.95em;
-    padding: 10px 16px;
-  }
+      .subtitle {
+        font-size: 0.95em;
+      }
 
-  .notice-board {
-    font-size: 0.9em;
-  }
+      .cloud-text {
+        font-size: 0.9em;
+        padding: 8px 14px;
+      }
 
-  .about-heading {
-    font-size: 1.6em;
-  }
+      .notice-board h2 {
+        font-size: 1.3em;
+      }
 
-  .about-text {
-    font-size: 0.95em;
-  }
-}
+      .about-heading {
+        font-size: 1.4em;
+      }
 
-@media (max-width: 480px) {
-  .nav-links a, .nav-icons a {
-    font-size: 1em;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
-  .subtitle {
-    font-size: 1em;
-  }
-
-  .cloud-text {
-    font-size: 0.9em;
-    padding: 8px 14px;
-  }
-
-  .notice-board {
-    padding: 15px;
-  }
-
-  .about-heading {
-    font-size: 1.4em;
-  }
-
-  .about-text {
-    font-size: 0.9em;
-  }
-}
-
+      .about-text {
+        font-size: 0.95em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -346,16 +267,13 @@
     <div class="logo">
       <img src="tiet_logo.png" alt="College Companion Logo" />
     </div>
-
-<div class="nav-links">
-  <a href="map.html">Map</a>
-  <a href="exams.html">Exams</a>
-  <a href="dineouts.html">Dine Outs</a>
-  <a href="hostels.html">Hostels</a>
-  <a href="course_content.html">Course Content</a>
-</div>
-
-
+    <div class="nav-links">
+      <a href="map.html">Map</a>
+      <a href="exams.html">Exams</a>
+      <a href="dineouts.html">Dine Outs</a>
+      <a href="hostels.html">Hostels</a>
+      <a href="course_content.html">Course Content</a>
+    </div>
     <div class="nav-icons">
       <a href="societies.html" title="Societies"><i class="fas fa-users"></i></a>
       <a href="events.html" title="Events"><i class="fas fa-calendar-alt"></i></a>
@@ -369,7 +287,6 @@
     <h1>Hey Thaparian!</h1>
     <p class="subtitle">One stop solution for all your college related queries</p>
 
-    <!-- Animated Cloud -->
     <a href="sgpa_calculator.html" class="cloud-container" title="Calculate SGPA">
       <div class="cloud-text">☁️ Wanna calculate your SGPA? Click here.</div>
     </a>
