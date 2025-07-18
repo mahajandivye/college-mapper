@@ -8,22 +8,18 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      height: 100%;
     }
 
-    body {
+    html, body {
       font-family: 'Poppins', sans-serif;
+      height: 100%;
       background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       color: white;
-      text-align: center;
-      position: relative;
     }
 
     body::before {
@@ -38,16 +34,15 @@
     }
 
     nav {
-      background-color: rgba(0, 0, 0, 0.7);
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 10px 20px;
-      position: fixed;
+      position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 999;
     }
 
     .logo img {
@@ -58,7 +53,8 @@
     .nav-links, .nav-icons {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
+      align-items: center;
       justify-content: center;
       margin-top: 10px;
     }
@@ -66,8 +62,8 @@
     .nav-links a, .nav-icons a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1em;
+      font-size: 0.95rem;
+      font-weight: 500;
       transition: color 0.3s ease;
     }
 
@@ -76,177 +72,139 @@
     }
 
     main {
-      flex: 1;
-      width: 100%;
+      padding: 120px 20px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 120px;
-      padding-bottom: 30px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 3em;
-      animation: fadeIn 2s ease-out;
-      margin-bottom: 0.2em;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
     .subtitle {
-      font-size: 1.3em;
-      font-weight: 500;
-      margin-bottom: 30px;
-      animation: fadeIn 3s ease-out;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
     }
 
     .cloud-container {
-      display: inline-block;
-      margin-top: 20px;
-      margin-bottom: 30px;
-      text-decoration: none;
       animation: floatCloud 3s ease-in-out infinite;
+      margin: 20px 0;
+      text-decoration: none;
     }
 
     .cloud-text {
       background: rgba(255, 255, 255, 0.85);
-      padding: 10px 20px;
-      border-radius: 40px;
-      font-size: 1.1em;
-      font-weight: 600;
       color: #333;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
     }
 
     .cloud-container:hover .cloud-text {
       transform: scale(1.05);
       background: #ffde59;
-      color: #000;
+      color: black;
     }
 
     @keyframes floatCloud {
-      0% { transform: translateY(0px); }
+      0% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
+      100% { transform: translateY(0); }
     }
 
     .notice-board {
-      background-color: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.95);
       color: #222;
-      padding: 25px;
+      padding: 20px;
       border-radius: 10px;
-      max-width: 90%;
-      width: 600px;
-      text-align: left;
-      margin: 20px 0;
-      animation: fadeIn 2s ease-out;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 30px;
     }
 
     .notice-board h2 {
       color: #002147;
-      font-size: 1.5em;
       margin-bottom: 10px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
+      font-size: 1.4rem;
     }
 
     .notice-board ul {
+      list-style: disc;
       padding-left: 20px;
-      list-style-type: disc;
+      text-align: left;
     }
 
     .notice-board li {
-      margin-bottom: 10px;
-      font-size: 1em;
+      margin-bottom: 8px;
+      font-size: 1rem;
     }
 
     .about-us {
-      max-width: 90%;
-      padding: 0 10px;
-      animation: fadeSlideUp 1.8s ease-out both;
+      max-width: 600px;
+      padding: 0 20px;
     }
 
     .about-heading {
-      font-size: 1.8em;
-      color: #ffffff;
-      margin-bottom: 15px;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
       font-weight: 600;
     }
 
     .about-text {
-      font-size: 1.1em;
-      color: #dddddd;
+      font-size: 1rem;
       line-height: 1.6;
+      color: #dddddd;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #ffffffcc;
     }
 
-    @keyframes fadeSlideUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @media screen and (max-width: 768px) {
+      .nav-links, .nav-icons {
+        flex: 1 0 100%;
+        justify-content: flex-start;
+        gap: 10px;
+        padding-left: 10px;
+      }
+
+      .cloud-text {
+        font-size: 0.95rem;
+        padding: 10px 15px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .notice-board, .about-us {
+        padding: 10px;
+      }
     }
 
     input[type="range"] {
       display: none;
-    }
-
-    footer {
-      width: 100%;
-      text-align: center;
-      font-size: 0.9em;
-      color: #ffffffcc;
-      padding: 15px 0;
-    }
-
-    @media screen and (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links, .nav-icons {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        width: 100%;
-        margin-top: 10px;
-        padding-left: 10px;
-      }
-
-      .nav-links a, .nav-icons a {
-        font-size: 0.95em;
-      }
-
-      h1 {
-        font-size: 2em;
-      }
-
-      .subtitle {
-        font-size: 1em;
-      }
-
-      .cloud-text {
-        font-size: 1em;
-        padding: 10px 15px;
-      }
-
-      .about-heading {
-        font-size: 1.5em;
-      }
-
-      .about-text {
-        font-size: 1em;
-      }
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="logo">
-      <img src="tiet_logo.png" alt="College Companion Logo" />
+      <img src="tiet_logo.png" alt="Logo">
     </div>
-
     <div class="nav-links">
       <a href="map.html">Map</a>
       <a href="exams.html">Exams</a>
@@ -254,13 +212,12 @@
       <a href="hostels.html">Hostels</a>
       <a href="course_content.html">Course Content</a>
     </div>
-
     <div class="nav-icons">
       <a href="societies.html" title="Societies"><i class="fas fa-users"></i></a>
       <a href="events.html" title="Events"><i class="fas fa-calendar-alt"></i></a>
       <a href="library.html" title="Library"><i class="fas fa-book"></i></a>
       <a href="books.html" title="Books"><i class="fas fa-book-open"></i></a>
-      <a href="sgpa_calculator.html" title="CGPA Calculator"><i class="fas fa-calculator"></i></a>
+      <a href="sgpa_calculator.html" title="SGPA Calculator"><i class="fas fa-calculator"></i></a>
     </div>
   </nav>
 
@@ -268,25 +225,24 @@
     <h1>Hey Thaparian!</h1>
     <p class="subtitle">One stop solution for all your college related queries</p>
 
-    <a href="sgpa_calculator.html" class="cloud-container" title="Calculate SGPA">
+    <a href="sgpa_calculator.html" class="cloud-container">
       <div class="cloud-text">☁️ Wanna calculate your SGPA? Click here.</div>
     </a>
 
     <div class="notice-board">
       <h2>Exam Notices</h2>
       <ul>
-        <li>Mid-term examinations will commence on <strong>August 12</strong>.</li>
-        <li>The deadline for exam form submission is <strong>August 5</strong>.</li>
-        <li>Admit cards will be issued from <strong>August 10</strong>.</li>
-        <li>End-term examinations are scheduled to begin on <strong>October 25</strong>.</li>
+        <li>Mid-term exams start on <strong>August 12</strong>.</li>
+        <li>Exam form deadline is <strong>August 5</strong>.</li>
+        <li>Admit cards issued from <strong>August 10</strong>.</li>
+        <li>End-terms begin on <strong>October 25</strong>.</li>
       </ul>
     </div>
 
     <section class="about-us">
       <h2 class="about-heading">About Us</h2>
       <p class="about-text">
-        College Companion is a modern tool designed to simplify campus life at Thapar University.
-        From academics to events, everything is just a click away — organized, reliable, and built with students in mind.
+        College Companion is your go-to tool for all things Thapar! From academics to events, everything is just a click away — organized, reliable, and student-built.
       </p>
     </section>
   </main>
