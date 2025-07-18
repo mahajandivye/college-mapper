@@ -8,16 +8,18 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body, html {
       font-family: 'Poppins', sans-serif;
+      height: 100%;
       background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
       color: white;
-      text-align: center;
-      position: relative;
-      min-height: 100vh;
     }
 
     body::before {
@@ -31,129 +33,148 @@
       z-index: -1;
     }
 
-    nav {
-      background-color: rgba(0, 0, 0, 0.7);
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      position: fixed;
-      top: 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      z-index: 100;
-    }
-
-    .logo img {
-      height: 40px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1em;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
+    header {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
       color: #ffde59;
     }
 
-    h1 {
-      margin-top: 100px;
-      font-size: 3.2em;
-      animation: fadeIn 2s ease-out;
+    .container {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
     }
 
-    .map-container {
-      margin: 30px auto;
-      max-width: 90%;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.95);
+    .search-section input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 15px;
+    }
+
+    .search-section button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      background-color: #ffde59;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .search-section button:hover {
+      background-color: #ffd000;
+    }
+
+    .map-frame {
+      margin-top: 25px;
+      width: 100%;
+      height: 400px;
       border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      color: #222;
-      font-size: 1.1em;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    .cloud-banner {
-      position: absolute;
-      top: 70px;
-      left: -400px;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cloud-container {
+      animation: floatCloud 3s ease-in-out infinite;
+      margin: 30px 0;
+      display: inline-block;
+    }
+
+    .cloud-text {
       background: rgba(255, 255, 255, 0.85);
       color: #333;
       padding: 12px 24px;
-      border-radius: 40px;
+      border-radius: 30px;
       font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      animation: moveCloud 25s linear infinite;
-      z-index: 1000;
-      white-space: nowrap;
+      font-size: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      text-decoration: none;
     }
 
-    .cloud-banner:hover {
-      background-color: #ffde59;
-      color: black;
+    .cloud-container:hover .cloud-text {
       transform: scale(1.05);
-      transition: all 0.3s ease;
-    }
-
-    @keyframes moveCloud {
-      0% { left: -400px; }
-      100% { left: 110%; }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      background: #ffde59;
+      color: black;
     }
 
     footer {
-      margin-top: 40px;
-      color: #ffffffcc;
-      font-size: 1em;
+      text-align: center;
       padding: 20px;
+      font-size: 0.9rem;
+      color: #ffffffcc;
+    }
+
+    @keyframes floatCloud {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 600px) {
+      header {
+        font-size: 1.5rem;
+      }
+
+      .search-section input {
+        width: 100%;
+      }
+
+      .cloud-text {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    📍 College Campus Map
+  </header>
 
-  <nav>
-    <div class="logo">
-      <img src="tiet_logo.png" alt="Logo">
+  <div class="container">
+    <div class="search-section">
+      <input type="text" id="placeInput" placeholder="Enter a place in the campus (e.g., Library, Hostel A)" />
+      <button onclick="searchPlace()">Search</button>
     </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="exams.html">Exams</a>
-      <a href="dineouts.html">Dine Outs</a>
-      <a href="hostels.html">Hostels</a>
-      <a href="coursecontent.html">Course Content</a>
+
+    <div class="map-frame">
+      <iframe id="mapFrame" 
+        src="https://www.google.com/maps/embed/v1/place?q=Thapar%20University&key=AIzaSyBJQAjKqEFxYCwZR3C4UPPgGWoEbrdMWtI" 
+        allowfullscreen></iframe>
     </div>
-  </nav>
 
-  <h1>Thapar Campus Map</h1>
-
-  <!-- Moving Cloud -->
-  <div class="cloud-banner" onclick="window.open('tiet_map.jpeg', '_blank')">
-    ☁️ Need an image of the overall map? Click here →
-  </div>
-
-  <div class="map-container">
-    <p><strong>Interactive campus map coming soon!</strong> This space will guide you through the different blocks, departments, and student amenities at Thapar University. Stay tuned!</p>
-    <p>For now, click the cloud to view the full map image.</p>
+    <a class="cloud-container" href="tiet_map.jpeg" download>
+      <div class="cloud-text">☁️ Need the full college map image? Click here to download.</div>
+    </a>
   </div>
 
   <footer>
     Made with ❤️ by Divye
   </footer>
 
+  <script>
+    function searchPlace() {
+      const input = document.getElementById("placeInput").value;
+      const key = 'AIzaSyBJQAjKqEFxYCwZR3C4UPPgGWoEbrdMWtI'; // Your real Google Maps Embed API key
+      const base = "https://www.google.com/maps/embed/v1/place?q=";
+      const url = `${base}${encodeURIComponent(input + ', Thapar University')}&key=${key}`;
+      document.getElementById("mapFrame").src = url;
+    }
+  </script>
 </body>
 </html>
