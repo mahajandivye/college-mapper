@@ -14,7 +14,7 @@
       padding: 0;
     }
 
-    body, html {
+    html, body {
       font-family: 'Poppins', sans-serif;
       height: 100%;
       background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
@@ -33,12 +33,41 @@
       z-index: -1;
     }
 
-    header {
-      background-color: rgba(0, 0, 0, 0.75);
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-links, .nav-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .nav-links a, .nav-icons a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-icons a:hover {
       color: #ffde59;
     }
 
@@ -92,6 +121,7 @@
       animation: floatCloud 3s ease-in-out infinite;
       margin: 30px 0;
       display: inline-block;
+      text-decoration: none;
     }
 
     .cloud-text {
@@ -103,7 +133,6 @@
       font-size: 1rem;
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
-      text-decoration: none;
     }
 
     .cloud-container:hover .cloud-text {
@@ -125,9 +154,12 @@
       100% { transform: translateY(0); }
     }
 
-    @media screen and (max-width: 600px) {
-      header {
-        font-size: 1.5rem;
+    @media screen and (max-width: 768px) {
+      .nav-links, .nav-icons {
+        flex: 1 0 100%;
+        justify-content: flex-start;
+        gap: 10px;
+        padding-left: 10px;
       }
 
       .search-section input {
@@ -142,9 +174,25 @@
   </style>
 </head>
 <body>
-  <header>
-    📍 College Campus Map
-  </header>
+  <nav>
+    <div class="logo">
+      <img src="tiet_logo.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+      <a href="map.html">Map</a>
+      <a href="exams.html">Exams</a>
+      <a href="dineouts.html">Dine Outs</a>
+      <a href="hostels.html">Hostels</a>
+      <a href="course_content.html">Course Content</a>
+    </div>
+    <div class="nav-icons">
+      <a href="societies.html" title="Societies"><i class="fas fa-users"></i></a>
+      <a href="events.html" title="Events"><i class="fas fa-calendar-alt"></i></a>
+      <a href="https://cl.thapar.edu/view1.php" title="Library"><i class="fas fa-book"></i></a>
+      <a href="books.html" title="Books"><i class="fas fa-book-open"></i></a>
+      <a href="sgpa_calculator.html" title="SGPA Calculator"><i class="fas fa-calculator"></i></a>
+    </div>
+  </nav>
 
   <div class="container">
     <div class="search-section">
@@ -170,7 +218,7 @@
   <script>
     function searchPlace() {
       const input = document.getElementById("placeInput").value;
-      const key = 'AIzaSyBJQAjKqEFxYCwZR3C4UPPgGWoEbrdMWtI'; // Your real Google Maps Embed API key
+      const key = 'AIzaSyBJQAjKqEFxYCwZR3C4UPPgGWoEbrdMWtI';
       const base = "https://www.google.com/maps/embed/v1/place?q=";
       const url = `${base}${encodeURIComponent(input + ', Thapar University')}&key=${key}`;
       document.getElementById("mapFrame").src = url;
