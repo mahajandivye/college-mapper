@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Content</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .search-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      width: 250px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffde59;
+      color: black;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e5c847;
+    }
+
+    footer {
+      margin-top: 60px;
+      color: #ffffffaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Course Content</h1>
+
+  <div class="search-container">
+    <input type="text" id="subjectInput" placeholder="Enter subject name (e.g., DBMS)" />
+    <button onclick="goToSubject()">Search</button>
+  </div>
+
+  <footer>
+    © 2025 College Companion
+  </footer>
+
+  <script>
+    function goToSubject() {
+      const input = document.getElementById("subjectInput").value.toLowerCase().trim();
+
+      const subjectMap = {
+        "dbms": "dbms.html",
+        "artificial intelligence": "artificial_intelligence.html",
+        "quantum materials": "quantum_materials.html"
+      };
+
+      if (subjectMap[input]) {
+        window.location.href = subjectMap[input];
+      } else {
+        alert("Subject not found. Try: DBMS, Artificial Intelligence, or Quantum Materials.");
+      }
+    }
+  </script>
+</body>
+</html>

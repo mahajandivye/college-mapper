@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGPA Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 100px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #ffde59;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background-color: #ffde59;
+      border: none;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffd000;
+    }
+
+    #subjects-container {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .subject-group {
+      margin-bottom: 15px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.3em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SGPA Calculator</h1>
+
+    <label for="totalCredits">Total Semester Credits:</label>
+    <input type="number" id="totalCredits" min="1" />
+
+    <label for="numSubjects">Number of Subjects:</label>
+    <input type="number" id="numSubjects" min="1" />
+    <button onclick="generateSubjectInputs()">Next</button>
+
+    <form id="subjectForm" onsubmit="calculateSGPA(event)">
+      <div id="subjects-container"></div>
+      <button type="submit" style="display:none;" id="calcBtn">Calculate SGPA</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const gradeMap = {
+      'A': 10,
+      'A-': 9,
+      'B': 8,
+      'B-': 7,
+      'C': 6
+    };
+
+    function generateSubjectInputs() {
+      const num = parseInt(document.getElementById("numSubjects").value);
+      const container = document.getElementById("subjects-container");
+      const calcBtn = document.getElementById("calcBtn");
+      container.innerHTML = "";
+      if (!num || num < 1) return;
+
+      for (let i = 1; i <= num; i++) {
+        container.innerHTML += `
+          <div class="subject-group">
+            <label>Subject ${i} Credit Score:</label>
+            <input type="number" min="1" name="credit${i}" required />
+            <label>Grade Received:</label>
+            <select name="grade${i}" required>
+              <option value="A">A</option>
+              <option value="A-">A-</option>
+              <option value="B">B</option>
+              <option value="B-">B-</option>
+              <option value="C">C</option>
+            </select>
+          </div>`;
+      }
+
+      calcBtn.style.display = "block";
+    }
+
+    function calculateSGPA(event) {
+      event.preventDefault();
+      const totalCredits = parseInt(document.getElementById("totalCredits").value);
+      const num = parseInt(document.getElementById("numSubjects").value);
+      let totalPoints = 0;
+
+      for (let i = 1; i <= num; i++) {
+        const credit = parseInt(document.querySelector(`input[name=credit${i}]`).value);
+        const grade = document.querySelector(`select[name=grade${i}]`).value;
+        totalPoints += credit * gradeMap[grade];
+      }
+
+      const sgpa = (totalPoints / totalCredits).toFixed(2);
+      document.getElementById("result").innerHTML = `Your SGPA is: <strong>${sgpa}</strong>`;
+    }
+  </script>
+</body>
+</html>

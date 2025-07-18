@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DBMS - Study Content</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      position: relative;
+      padding: 40px 20px;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .pdf-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #222;
+      max-width: 700px;
+      width: 90%;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+
+    .pdf-container h2 {
+      font-size: 1.6em;
+      color: #002147;
+      margin-bottom: 20px;
+    }
+
+    .pdf-container ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .pdf-container li {
+      margin-bottom: 15px;
+    }
+
+    .pdf-container a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #003566;
+      transition: color 0.3s ease;
+    }
+
+    .pdf-container a:hover {
+      color: #ff9900;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffde59;
+      color: black;
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #e5c847;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #ffffffaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>DBMS Study Material</h1>
+
+  <div class="pdf-container">
+    <h2>Available PDFs</h2>
+    <ul>
+      <li><a href="Ch1_Basics of DBMS (4).pptx" target="_blank"><i class="fas fa-file-pdf"></i>Introduction to DBMS</a></li>
+      <li><a href="Ch2_ Three Level Architecture of DBMS (4).ppt" target="_blank"><i class="fas fa-file-pdf"></i>Three level Architecture</a></li>
+      <li><a href="Ch3_Database Model (4).ppt" target="_blank"><i class="fas fa-file-pdf"></i>Database Model</a></li>
+      <li><a href="Ch4_Relational Model (3).ppt" target="_blank"><i class="fas fa-file-pdf"></i>Relational Model</a></li>
+      <li><a href="Ch5_Keys in Relational model (8).pptx" target="_blank"><i class="fas fa-file-pdf"></i>Keys in Relational Model</a></li>
+      <li><a href="Ch6_Constraints in Relational model (8).pptx" target="_blank"><i class="fas fa-file-pdf"></i>Constraints in DBMS</a></li>
+    </ul>
+  </div>
+
+  <button class="back-button" onclick="window.location.href='course_content.html'">
+    ← Back to Course Content
+  </button>
+
+  <footer>
+    Made with ❤️ by Divye
+  </footer>
+</body>
+</html>
