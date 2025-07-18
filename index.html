@@ -8,21 +8,19 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    * {
-      box-sizing: border-box;
-    }
-
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
     }
 
     body {
+      font-family: 'Poppins', sans-serif;
       background: url('https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       color: white;
       text-align: center;
       position: relative;
@@ -46,11 +44,10 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px;
+      padding: 10px 20px;
       position: fixed;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
     }
 
     .logo img {
@@ -60,16 +57,17 @@
 
     .nav-links, .nav-icons {
       display: flex;
-      gap: 25px;
       flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
+      margin-top: 10px;
     }
 
     .nav-links a, .nav-icons a {
       color: white;
       text-decoration: none;
-      font-size: 1.1em;
       font-weight: 600;
+      font-size: 1em;
       transition: color 0.3s ease;
     }
 
@@ -78,43 +76,45 @@
     }
 
     main {
-      padding-top: 100px;
-      padding-bottom: 40px;
+      flex: 1;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-top: 120px;
+      padding-bottom: 30px;
     }
 
     h1 {
       font-size: 3em;
-      animation: fadeIn 1.5s ease-out;
+      animation: fadeIn 2s ease-out;
       margin-bottom: 0.2em;
     }
 
     .subtitle {
-      font-size: 1.2em;
+      font-size: 1.3em;
       font-weight: 500;
-      margin-bottom: 25px;
-      animation: fadeIn 2s ease-out;
+      margin-bottom: 30px;
+      animation: fadeIn 3s ease-out;
     }
 
     .cloud-container {
       display: inline-block;
-      margin: 20px 0;
-      animation: floatCloud 3s ease-in-out infinite;
+      margin-top: 20px;
+      margin-bottom: 30px;
       text-decoration: none;
+      animation: floatCloud 3s ease-in-out infinite;
     }
 
     .cloud-text {
       background: rgba(255, 255, 255, 0.85);
-      padding: 12px 28px;
+      padding: 10px 20px;
       border-radius: 40px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       font-weight: 600;
       color: #333;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     .cloud-container:hover .cloud-text {
@@ -124,32 +124,34 @@
     }
 
     @keyframes floatCloud {
-      0%, 100% { transform: translateY(0); }
+      0% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
 
     .notice-board {
       background-color: rgba(255, 255, 255, 0.95);
       color: #222;
-      padding: 25px 30px;
+      padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 600px;
-      margin-bottom: 40px;
+      max-width: 90%;
+      width: 600px;
       text-align: left;
+      margin: 20px 0;
+      animation: fadeIn 2s ease-out;
     }
 
     .notice-board h2 {
       color: #002147;
       font-size: 1.5em;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
     }
 
     .notice-board ul {
       padding-left: 20px;
+      list-style-type: disc;
     }
 
     .notice-board li {
@@ -158,15 +160,16 @@
     }
 
     .about-us {
-      max-width: 750px;
-      padding: 0 20px;
+      max-width: 90%;
+      padding: 0 10px;
+      animation: fadeSlideUp 1.8s ease-out both;
     }
 
     .about-heading {
-      font-size: 2em;
-      font-weight: 600;
-      color: white;
+      font-size: 1.8em;
+      color: #ffffff;
       margin-bottom: 15px;
+      font-weight: 600;
     }
 
     .about-text {
@@ -175,41 +178,48 @@
       line-height: 1.6;
     }
 
-    footer {
-      width: 100%;
-      text-align: center;
-      font-size: 1em;
-      color: #ffffffcc;
-      padding: 15px 0;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     input[type="range"] {
       display: none;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    footer {
+      width: 100%;
+      text-align: center;
+      font-size: 0.9em;
+      color: #ffffffcc;
+      padding: 15px 0;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
+    @media screen and (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
-        padding: 10px 20px;
       }
 
       .nav-links, .nav-icons {
         justify-content: flex-start;
-        gap: 15px;
+        flex-wrap: wrap;
         width: 100%;
         margin-top: 10px;
-        flex-wrap: wrap;
+        padding-left: 10px;
+      }
+
+      .nav-links a, .nav-icons a {
+        font-size: 0.95em;
       }
 
       h1 {
-        font-size: 2.2em;
+        font-size: 2em;
       }
 
       .subtitle {
@@ -218,46 +228,15 @@
 
       .cloud-text {
         font-size: 1em;
-        padding: 10px 20px;
-      }
-
-      .notice-board {
-        font-size: 0.95em;
+        padding: 10px 15px;
       }
 
       .about-heading {
-        font-size: 1.6em;
+        font-size: 1.5em;
       }
 
       .about-text {
         font-size: 1em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8em;
-      }
-
-      .subtitle {
-        font-size: 0.95em;
-      }
-
-      .cloud-text {
-        font-size: 0.9em;
-        padding: 8px 14px;
-      }
-
-      .notice-board h2 {
-        font-size: 1.3em;
-      }
-
-      .about-heading {
-        font-size: 1.4em;
-      }
-
-      .about-text {
-        font-size: 0.95em;
       }
     }
   </style>
@@ -267,6 +246,7 @@
     <div class="logo">
       <img src="tiet_logo.png" alt="College Companion Logo" />
     </div>
+
     <div class="nav-links">
       <a href="map.html">Map</a>
       <a href="exams.html">Exams</a>
@@ -274,6 +254,7 @@
       <a href="hostels.html">Hostels</a>
       <a href="course_content.html">Course Content</a>
     </div>
+
     <div class="nav-icons">
       <a href="societies.html" title="Societies"><i class="fas fa-users"></i></a>
       <a href="events.html" title="Events"><i class="fas fa-calendar-alt"></i></a>
